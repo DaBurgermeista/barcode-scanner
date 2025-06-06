@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Barcode Inventory App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="/">🔍 Scanner</a>
+    <a href="/inventory.html">📋 Inventory</a>
+  </nav>
+
+  <div class="container">
+    <h1>📦 Inventory Scanner</h1>
+
+    <input type="text" id="barcode-input" autofocus placeholder="Scan barcode..." />
+
+    <div id="result-container">
+      <h2>Scanned Code</h2>
+      <p id="scan-output">Waiting...</p>
+    </div>
+
+    <div id="log-container">
+      <h2>Scan Log</h2>
+      <ul id="scan-log"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

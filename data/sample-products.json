@@ -1,0 +1,16 @@
+[
+  {
+    "barcode": "01213104",
+    "name": "Mtn Dew",
+    "brand": "Mtn Dew,Mountain Dew",
+    "image": "https://images.openfoodfacts.org/images/products/000/000/121/3104/front_en.42.400.jpg",
+    "stock": 1
+  },
+  {
+    "barcode": "028400047906",
+    "name": "Cheetos Crunchy",
+    "brand": "Cheetos",
+    "image": "https://images.openfoodfacts.org/images/products/002/840/004/7906/front_en.25.400.jpg",
+    "stock": 1
+  }
+]
