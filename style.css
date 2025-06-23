@@ -1,0 +1,80 @@
+
+body {
+    background-color: black;
+    color:green;
+    font-family: "VT323", monospace;
+    height: 100vh;
+    margin: 1rem;
+}
+
+.typewriter-container {
+    white-space: nowrap;
+    overflow-y: auto;
+    font-size: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+
+    scrollbar-width: none;
+}
+
+.typewriter-container::-webkit-scrollbar {
+    display: none;
+}
+
+#user-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.prompt {
+  color: #00ff00;
+  margin-right: 0.5em;
+  font-size: 1.5rem;
+}
+
+#terminal-input {
+  background: black;
+  color: #00ff00;
+  border: none;
+  outline: none;
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background-color: #00ff00;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+#typewriter-text.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.text {
+    color: green;
+}
+
+.warning {
+    color: red;
+}
+
+.info {
+    color: yellow;
+}
+
+.system {
+    color: blue;
+}
