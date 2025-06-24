@@ -1,80 +1,132 @@
-
 body {
-    background-color: black;
-    color:green;
-    font-family: "VT323", monospace;
-    height: 100vh;
-    margin: 1rem;
+	background-color: black;
+	color: green;
+	font-family: 'VT323', monospace;
+	height: 100vh;
+	margin: 1rem;
+	overflow-y: hidden;
 }
 
 .typewriter-container {
-    white-space: nowrap;
-    overflow-y: auto;
-    font-size: 1.5rem;
-    width: 100%;
-    max-width: 600px;
-    height: 90vh;
+	white-space: nowrap;
+	overflow-y: auto;
+	font-size: 1.5rem;
+	width: 100%;
+	max-width: 70%;
+	height: 95%;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: green;
+	font-family: 'VT323', monospace;
+	padding: 1rem;
+	border: 1px solid #00ff00;
+	scrollbar-width: none;
+	scroll-behavior: smooth;
+}
 
-    scrollbar-width: none;
+#typwriter-text {
+	display: flex;
+	flex-direction: column;
 }
 
 .typewriter-container::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 #user-input-line {
-  display: flex;
-  align-items: center;
-  margin-top: 1em;
+	display: flex;
+	align-items: center;
+	margin-top: 0.1em;
 }
 
 .prompt {
-  color: #00ff00;
-  margin-right: 0.5em;
-  font-size: 1.5rem;
+	color: #00ff00;
+	margin-right: 0.5em;
+	font-size: 1.5rem;
 }
 
 #terminal-input {
-  background: black;
-  color: #00ff00;
-  border: none;
-  outline: none;
-  font-family: 'VT323', monospace;
-  font-size: 1.5rem;
-  width: 100%;
+	background: black;
+	color: #00ff00;
+	border: none;
+	outline: none;
+	font-family: 'VT323', monospace;
+	font-size: 1.5rem;
+	width: 100%;
 }
 
 .cursor {
-  display: inline-block;
-  width: 10px;
-  height: 1em;
-  background-color: #00ff00;
-  margin-left: 4px;
-  animation: blink 1s step-end infinite;
+	display: inline-block;
+	width: 10px;
+	height: 1em;
+	background-color: #00ff00;
+	margin-left: 4px;
+	animation: blink 1s step-end infinite;
 }
 
+.options-panel {
+	width: 30%;
+	height: 95%;
+	padding: 1rem;
+	border: 1px solid #00ff00;
+	color: #00ff00;
+	font-family: 'VT323', monospace;
+	font-size: 1.2rem;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.options-header {
+	margin-bottom: 0.5rem;
+	border-bottom: 1px solid #00ff00;
+	padding-bottom: 0.3rem;
+}
+
+.options-list {
+	list-style: none;
+	padding-left: 0;
+}
+
+.options-list li {
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+}
+
+.options-list li:hover {
+	text-decoration: underline;
+	color: #00ff88;
+}
 
 @keyframes blink {
-    50% { opacity: 0; }
+	50% {
+		opacity: 0;
+	}
 }
 
 #typewriter-text.fade-out {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+	opacity: 0;
+	transition: opacity 2s ease-in-out;
 }
 
 .text {
-    color: green;
+	color: green;
 }
 
 .warning {
-    color: red;
+	color: red;
 }
 
 .info {
-    color: yellow;
+	color: yellow;
 }
 
 .system {
-    color: blue;
+	color: blue;
+}
+
+canvas#circuitCanvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
 }

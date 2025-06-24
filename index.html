@@ -1,23 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Hello...?</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="typewriter-container">
-        <div id="typewriter-text"></div>
-    </div>
-    <div id="user-input-line">
-        <span class="prompt">>>></span>
-        <input type="text" id="terminal-input" autofocus />
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Hello...?</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<canvas id="circuitCanvas"></canvas>
+		<!-- Main layout container -->
+		<div
+			style="
+				display: flex;
+				height: 100vh;
+				gap: 1rem;
+				padding: 1rem;
+				box-sizing: border-box;
+			"
+		>
+			<!-- Terminal output -->
+			<div class="typewriter-container">
+				<div id="typewriter-text"></div>
+			</div>
 
+			<!-- Options panel -->
+			<div class="options-panel">
+				<h3 class="options-header">Options</h3>
+				<ul id="choice-list" class="options-list"></ul>
+			</div>
+		</div>
+		<script>
+			const canvas = document.getElementById('circuitCanvas');
+			const ctx = canvas.getContext('2d');
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 
-    <script type="module" src="main.js"></script>
-</body>
+			const ANGLES = [
+				0,
+				Math.PI / 4,
+				Math.PI / 2,
+				(3 * Math.PI) / 4,
+				Math.PI,
+				(5 * Math.PI) / 4,
+				(3 * Math.PI) / 2,
+				(7 * Math.PI) / 4
+			];
+
+			class Trace {
+				constructor() {
+					this.reset();
+					this.history = [];
+				}
+
+				reset() {
+					this.x = Math.random() * canvas.width;
+					this.y = Math.random() * canvas.height;
+					this.length = Math.random() * 100 + 50;
+					this.angle = ANGLES[Math.floor(Math.random() * ANGLES.length)];
+					this.speed = 1 + Math.random();
+					this.opacity = 0.3;
+					this.history = [{ x: this.x, y: this.y }];
+				}
+
+				update() {
+					const nextX = this.x + Math.cos(this.angle) * this.speed;
+					const nextY = this.y + Math.sin(this.angle) * this.speed;
+
+					this.x = nextX;
+					this.y = nextY;
+					this.history.push({ x: this.x, y: this.y });
+
+					this.length -= this.speed;
+					if (
+						this.length <= 0 ||
+						this.x < 0 ||
+						this.y < 0 ||
+						this.x > canvas.width ||
+						this.y > canvas.height
+					) {
+						this.reset();
+					}
+				}
+
+				draw() {
+					ctx.beginPath();
+					ctx.strokeStyle = `rgba(0,255,0,${this.opacity})`;
+					ctx.moveTo(this.history[0].x, this.history[0].y);
+					for (let i = 1; i < this.history.length; i++) {
+						ctx.lineTo(this.history[i].x, this.history[i].y);
+					}
+					ctx.stroke();
+				}
+			}
+
+			const traces = Array.from({ length: 100 }, () => new Trace());
+
+			function animate() {
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				traces.forEach((trace) => {
+					trace.update();
+					trace.draw();
+				});
+				requestAnimationFrame(animate);
+			}
+
+			animate();
+		</script>
+		<script type="module" src="main.js"></script>
+	</body>
 </html>
