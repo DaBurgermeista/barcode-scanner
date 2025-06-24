@@ -8,6 +8,10 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
     "globals": "^16.2.0",
+    "live-server": "^1.2.0",
     "prettier": "^3.6.0"
+  },
+  "scripts": {
+    "start": "live-server --port=5500 --watch=."
   }
 }
